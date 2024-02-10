@@ -6,3 +6,5 @@ docker compose -f docker-compose.yml -f docker-compose.override.yml up --build
 https://docs.sqlc.dev/en/latest/tutorials/getting-started-postgresql.html
 
 sqlc generate
+
+goose postgres postgres://postgres:postgres@localhost:5432/rss up
