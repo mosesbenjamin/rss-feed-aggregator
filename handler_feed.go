@@ -52,7 +52,7 @@ func (cfg *apiConfig) handlerFeedCreate(w http.ResponseWriter, r *http.Request, 
 		Feed       Feed       `json:"feed"`
 		FeedFollow FeedFollow `json:"feed_follow"`
 	}{
-		Feed:       databseFeedToFeed(feed),
+		Feed:       databaseFeedToFeed(feed),
 		FeedFollow: databaseFeedFollowToFeedFollow(feedFollow),
 	})
 }

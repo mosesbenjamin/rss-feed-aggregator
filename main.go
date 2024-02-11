@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -83,6 +84,10 @@ func main() {
 		Addr:    ":" + envVars["SERVER_PORT"],
 		Handler: router,
 	}
+
+	const collectionConcurrency = 10
+	const collectionInterval = time.Minute
+	go startScraping(dbQueries, collectionConcurrency, collectionInterval)
 
 	log.Printf("Starting server on port %s", envVars["SERVER_PORT"])
 	log.Fatal(srv.ListenAndServe())
